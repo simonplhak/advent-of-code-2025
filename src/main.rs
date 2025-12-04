@@ -1,6 +1,7 @@
 mod day_01;
 mod day_02;
 mod day_03;
+mod day_04;
 mod utils;
 use std::{fmt::Display, path::PathBuf};
 
@@ -25,6 +26,7 @@ enum Commands {
     Day01,
     Day02,
     Day03,
+    Day04,
 }
 
 impl Display for Commands {
@@ -33,6 +35,7 @@ impl Display for Commands {
             Commands::Day01 => write!(f, "day_01"),
             Commands::Day02 => write!(f, "day_02"),
             Commands::Day03 => write!(f, "day_03"),
+            Commands::Day04 => write!(f, "day_04"),
         }
     }
 }
@@ -62,6 +65,10 @@ fn main() -> Result<()> {
         Commands::Day03 => match cli.second {
             true => day_03::task_02(&data_path(&cli))?,
             false => day_03::task_01(&data_path(&cli))?,
+        },
+        Commands::Day04 => match cli.second {
+            true => day_04::task_02(&data_path(&cli))?,
+            false => day_04::task_01(&data_path(&cli))?,
         },
     };
     println!("{:?}: {}", cli.command, res);
