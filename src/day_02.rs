@@ -2,7 +2,7 @@ use std::path::Path;
 
 use anyhow::Result;
 
-use crate::utils::digit_count;
+use crate::utils::{Range, digit_count, make_ranges};
 
 pub fn task_01(data_path: &Path) -> Result<String> {
     let ranges = load_data(data_path)?;
@@ -66,27 +66,10 @@ pub fn task_02(data_path: &Path) -> Result<String> {
     ))
 }
 
-#[derive(Debug)]
-struct Range {
-    start: usize,
-    end: usize,
-}
-
 fn load_data(data_path: &Path) -> Result<Vec<Range>> {
     let content = std::fs::read_to_string(data_path)?
         .trim()
         .replace("\n", "")
         .to_string();
-    let create_range = |s: &str| -> Result<Range> {
-        let split = s.split('-').collect::<Vec<&str>>();
-        assert!(split.len() == 2);
-        let start = split[0].parse::<usize>()?;
-        let end = split[1].parse::<usize>()?;
-        assert!(start <= end);
-        Ok(Range { start, end })
-    };
-    content
-        .split(',')
-        .map(create_range)
-        .collect::<Result<Vec<Range>>>()
+    make_ranges(content, ',')
 }
