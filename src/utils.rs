@@ -17,6 +17,22 @@ pub fn digit_count(n: usize) -> usize {
     }
 }
 
+#[derive(Debug)]
+pub struct Point3D {
+    pub x: usize,
+    pub y: usize,
+    pub z: usize,
+}
+
+impl Point3D {
+    pub fn l2(&self, b: &Point3D) -> f64 {
+        (((self.x as isize - b.x as isize).pow(2)
+            + (self.y as isize - b.y as isize).pow(2)
+            + (self.z as isize - b.z as isize).pow(2)) as f64)
+            .sqrt()
+    }
+}
+
 #[derive(Debug, PartialEq, Eq, Copy, Clone)]
 pub struct Range {
     pub start: usize,
