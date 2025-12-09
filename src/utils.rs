@@ -18,6 +18,12 @@ pub fn digit_count(n: usize) -> usize {
 }
 
 #[derive(Debug)]
+pub struct Point2D {
+    pub x: usize,
+    pub y: usize,
+}
+
+#[derive(Debug)]
 pub struct Point3D {
     pub x: usize,
     pub y: usize,
