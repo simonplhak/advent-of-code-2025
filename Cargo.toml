@@ -7,3 +7,4 @@ edition = "2024"
 anyhow = "1.0.100"
 clap = { version = "4.5.53", features = ["derive"]}
 geo = "0.32.0"
+good_lp = { version = "*", features = ["lpsolve"], default-features = false }
