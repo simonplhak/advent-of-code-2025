@@ -23,7 +23,6 @@ pub fn task_01(data_path: &Path) -> Result<String> {
         .split('\n')
         .filter(|line| !line.is_empty())
     {
-        println!("line: {}", line);
         let line_split = line.split(':').collect::<Vec<_>>();
         let total_area = line_split[0]
             .split('x')
@@ -36,7 +35,6 @@ pub fn task_01(data_path: &Path) -> Result<String> {
             .enumerate()
             .map(|(present_id, present_count)| presents_area[present_id] * present_count)
             .sum::<usize>();
-        println!("present_area: {}, total_area: {}", present_area, total_area);
         total += if present_area <= total_area { 1 } else { 0 };
     }
     Ok(format!("Answer: {}", total))
